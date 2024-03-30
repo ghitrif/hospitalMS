@@ -21,14 +21,11 @@ RUN a2enmod rewrite
 
 # Set working directory
 WORKDIR /var/www/html
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# # Get latest Composer
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Install PHP dependencies
-RUN composer install --no-scripts --no-autoloader
 
 # Copy the rest of the application
 COPY . /var/www/html
