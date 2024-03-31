@@ -18,6 +18,9 @@ RUN  apt-get install -y \
     unzip
 RUN a2enmod rewrite
 
+COPY /home/samadi/.ssh/gitlab /root/.ssh/id_rsa
+COPY /home/samadi/.ssh/gitlab.pub /root/.ssh/id_rsa
+COPY /home/samadi/.ssh/known_hosts /root/.ssh/id_rsa
 
 # Set working directory
 WORKDIR /var/www/html
